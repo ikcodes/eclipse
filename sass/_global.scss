@@ -1,0 +1,366 @@
+body:not(.mce-content-body) {
+  background-image: url("/assets/wood-bg-3.jpg");
+  background-size: 100% auto;
+  @include breakpoint(small only) {
+    background-image: url("/assets/wood-bg-4.jpg");
+  }
+  // Don't use cover!!
+  color: $black;
+  display: flex;
+  font-family: $body-font, sans-serif;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  #bg-overlay {
+    background-color: rgba(230, 230, 230, 0.4);
+    z-index: 3;
+  }
+}
+
+a {
+  text-decoration: none;
+  line-height: inherit;
+  &:hover {
+    color: $black;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  img {
+    border: none;
+  }
+}
+
+// These from right.
+// The higher the number, the sooner it breaks.
+// ALSO, must be defined OUTSIDE of a rule.
+$responsive-breakpoint-1: 1024px;
+$responsive-breakpoint-2: 995px;
+$responsive-breakpoint-3: 820px;
+
+/*======>  NAV  <=======*/
+nav {
+  background: url("/assets/wood-bg-nav.jpg");
+  background-position: center top;
+  box-shadow: $shadow;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  @include breakpoint(large up) {
+    background-size: cover;
+  }
+  ul {
+    margin-left: 0; /* Override default */
+  }
+
+  //======>  Top Nav Links  <=======*/
+  // Responsive bp's above factor heavy into this.
+  .top-bar {
+    height: 150px;
+    transition: height $transition-speed ease-in-out;
+    @include breakpoint(small only) {
+      height: 85px;
+    }
+    ul {
+      display: flex;
+      font-family: $hanley;
+      float: right;
+      list-style: none;
+      // margin: 0 2vw;
+      margin: 0;
+      padding: 1rem;
+      li {
+        a {
+          color: $red;
+          font-size: 1.25rem;
+          padding: 0.25rem 0.5rem;
+          border: 2px solid $trans-100;
+          text-align: right;
+          &:hover {
+            // border: 2px solid $red;
+            // border-radius: 5rem;
+            color: $blue;
+            text-decoration: none;
+          }
+        }
+        // Drop links off from right
+        //	when screen is shrinking.
+        &:nth-last-of-type(1):not(.desknav-social-icon) {
+          @media (max-width: $responsive-breakpoint-1) {
+            display: none;
+          }
+        }
+        &:nth-last-of-type(2):not(.desknav-social-icon) {
+          @media (max-width: $responsive-breakpoint-2) {
+            display: none;
+          }
+        }
+        &:nth-last-of-type(3):not(.desknav-social-icon) {
+          @media (max-width: $responsive-breakpoint-3) {
+            display: none;
+          }
+        }
+        @include breakpoint(small only) {
+          display: none;
+        }
+      }
+    }
+  }
+  #navLogo {
+    height: 125px;
+    margin: 5px;
+    padding: 0;
+    transition: height $transition-speed ease-in-out;
+    z-index: 6;
+    @include breakpoint(small only) {
+      height: 75px;
+      margin: 0;
+      padding: 5px;
+    }
+  }
+  #socialIcons {
+    display: flex;
+    float: right;
+    margin-right: 0.5rem;
+    li {
+      border-radius: 30px;
+      margin: 2px;
+      img {
+        height: 30px;
+      }
+      &:hover {
+        background-color: $trans-20-black;
+      }
+    }
+  }
+
+  #mobilenavLinks {
+    height: 100vh;
+    display: none;
+    ul {
+      font-family: $hanley;
+      list-style: none;
+      margin: 0 0 4vh;
+      // overflow: scroll;
+      padding: 0;
+
+      @include breakpoint(medium only) {
+        margin-top: -20px;
+      }
+
+      li {
+        margin: 1vh auto;
+        a {
+          color: $red;
+          font-size: 40px;
+          padding: 0 10px;
+          @include breakpoint(small only) {
+            font-size: 5vh;
+            line-height: 5vh;
+          }
+          @include breakpoint(medium up) {
+            &:hover {
+              // border: 3px solid $red;
+              // border-radius: 5rem;
+              color: $blue;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    // Circular social links in mobile nav
+    //	For some reason, this was the trickiest SCSS ever.
+    #mobilenavSocials {
+      text-align: center;
+      .mobilenav-social-icon {
+        margin: 4px;
+        img {
+          border-radius: 35px;
+          height: 35px;
+          &:hover {
+            background-color: $trans-20-black;
+          }
+        }
+      }
+    }
+  }
+
+  // BURGER POSITIONING & TRIGGERING
+  #hamburger-container {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 29px;
+    @include breakpoint(small only) {
+      top: 28px;
+    }
+    &:hover {
+      span {
+        background: $red;
+      }
+    }
+  }
+  // HAMBURGER Codepen
+  #hamburger {
+    height: 25px;
+    margin: 0px 20px 4px; // Margin is vertical span
+    transform: rotate(0deg);
+    transition: 0.25s ease-in-out;
+    width: 40px;
+    span {
+      background: $blue;
+      border-radius: 1px;
+      display: block;
+      height: 4px;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      transform: rotate(0deg);
+      transition: 0.25s ease-in-out;
+      width: 100%;
+      &:nth-child(1) {
+        top: 0px;
+      }
+      &:nth-child(2) {
+        top: 12px;
+      }
+      &:nth-child(3) {
+        top: 24px;
+      }
+    }
+    &.open {
+      // MENU OPENS.
+      span:nth-child(1) {
+        top: 12px;
+        transform: rotate(135deg);
+      }
+      span:nth-child(2) {
+        left: -60px;
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        top: 12px;
+        transform: rotate(-135deg);
+      }
+    }
+  }
+} // End of 'nav'
+
+// This also exists in small breakpoints above!
+/*========>  SLIM NAV  <========*/
+nav.slim {
+  .top-bar {
+    height: 85px;
+    #navLogo {
+      height: 75px;
+      margin: 0;
+      padding: 5px;
+    }
+    #socialIcons {
+      display: none;
+    }
+  }
+  #hamburger-container {
+    top: 28px;
+  }
+  #socialIcons {
+    display: none;
+  }
+}
+
+//========>  NAV OFFSET  <========*/
+main#content {
+  // Offset nav. (Not real body)
+  margin: 150px 0 0;
+  @include breakpoint(small only) {
+    margin: 85px 0 0;
+  }
+}
+
+/*======>  FOOTER  <=======*/
+footer {
+  background: url("/assets/wood-bg-nav.jpg");
+  background-position: center center;
+  background-size: 100% auto;
+  bottom: 0;
+  border: 0;
+  margin: 0;
+  padding: 2rem 1rem 1rem;
+  width: 100%;
+  @include breakpoint(small only) {
+    padding: 0rem 1rem;
+  }
+  img {
+    height: 68px;
+    margin: 10px 0 30px;
+  }
+  p,
+  a {
+    color: $blue;
+    font-family: $hanley;
+    line-height: 20px;
+    margin: 0;
+    text-align: center;
+  }
+  #addressLine {
+    @include breakpoint(small only) {
+      padding-top: 0.5rem;
+    }
+  }
+  #copyLine,
+  #ianLine,
+  #termsLine {
+    font-family: $proxima;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 15px 0 0;
+    text-align: center;
+  }
+  // Pad SITEWIDE footer bottom!!!
+  @include breakpoint(small only) {
+    #termsLine {
+      padding-bottom: 30px;
+    }
+    #copyLine {
+      padding: 20px 0 0;
+    }
+  }
+  #ianLine {
+    display: none;
+  }
+  #footerLogo {
+    height: 125px;
+    @include breakpoint(medium up) {
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+/*=====>  RESPONSIVE MGMT  <======*/
+@media (max-width: 1024px) {
+  nav {
+    #hamburger-container {
+      display: block;
+    }
+    #desknavLinks {
+      margin-right: 5rem;
+      // margin: -1rem 5rem 1rem 0;
+    }
+    #socialIcons {
+      margin-right: 5.5rem; // Offsets .5rem pad on nav li
+    }
+  }
+}
+
+// Hide the burger when the last link has appeared
+@media (min-width: 1025px) {
+  #hamburger-container {
+    display: none;
+  }
+}
+
+select {
+  padding: 0.25rem 1.75rem 0.5rem 0.5rem !important;
+}

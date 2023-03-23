@@ -1,0 +1,11 @@
+mixin about-preview(team)
+	a(href="about/"+team.slug)
+		if team.image.exists
+			.featurePhoto(style="background-image: url('"+team.image.url+"');")
+				.feature-photo-border
+		else
+			.featurePhoto(style="background-image: url('/assets/coming-soon.jpg');")
+				.feature-photo-border
+	a(href="about/"+team.slug).no-decoration
+		h5.no-marg.tm-name=team.name.first+" "+team.name.last
+		p.text-center.no-marg.white=team.role

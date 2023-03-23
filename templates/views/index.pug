@@ -1,0 +1,172 @@
+extends ../global
+block content
+	// Homepage Slick Slider
+	img#heroLogo(src="/images/eclipse-logo.png")
+	.homepage-slider
+		.fullwidth-container
+			each sim in slider_images
+				.fullwidth-bg(style="background-image: url('"+sim.image.url+"')")
+					if sim.name
+						.slider-name-container: p.text-center=sim.name
+			
+	// Slider Controls
+	.homepage-slider-controls
+		a#goback
+			.hps-circle.hps-prev
+		a#goforward
+			.hps-circle.hps-next
+	// Begin Grid
+	.grid-container: .grid-x.align-center
+	
+		//==================
+		// TALENT [PREVIEW] 
+		//==================
+		.cell.small-12
+			.round-box.red-bg
+				//- Section Header (Top section)
+				.grid-x.section-heading-top
+					.cell.medium-3.large-4.section-separator.ss-left.hide-for-small-only
+					.cell.small-12.medium-6.large-4.section-heading
+						a(href="/talent").home-link
+							h1.red Talent
+					.cell.medium-3.large-4.section-separator.ss-right.hide-for-small-only
+				//- Section Content
+				.grid-x.grid-padding-x.t-pad-30.b-pad-30
+					each artist in talent
+						.cell.large-3.medium-4.small-12.tb-pad-15
+							+talent-preview(artist)
+		
+		//===================
+		// MUSIC [PREVIEW] 
+		//===================
+		.cell.small-12
+			.round-box.blue-bg
+				//- Section Header
+				.grid-x.section-heading-container
+					.cell.medium-3.large-4.section-separator.ss-left.hide-for-small-only
+					.cell.small-12.medium-6.large-4.section-heading
+						a(href="/music").home-link
+							h1.blue Music
+					.cell.medium-3.large-4.section-separator.ss-right.hide-for-small-only
+				//- Section Content
+				.grid-x.grid-padding-x.tb-pad-60
+					//-=============================================================
+					//- 	i					=>	Counter
+					//- 	cat_bg		=>	Background image (music entry cover)
+					//- 	div_html	=>	Hide last 4 images on mobile. USE RAW HTML!
+					//-=============================================================
+					- var i=1
+					- var div_html = 'cell large-3 medium-4 small-12 text-center'
+						//- Outer loop
+						each c in music
+							- var cat_bg
+							if c.image.exists
+								- cat_bg = c.image.url
+							else
+								- cat_bg = '/assets/coming-soon.jpg'
+							if i>=5
+								- div_html = 'cell large-3 medium-4 small-12 text-center hide-for-small-only'
+							if i>=7
+								- div_html = 'cell large-3 medium-4 small-12 text-center show-for-large'
+							if i<=8
+								- i++
+								div(class=div_html)
+									p.catalog-bg-container
+									.catalog-bg(style="background-image: url("+cat_bg+");")
+									
+										//- Medium only
+										.catalog-info.show-for-medium
+											p.project-name=c.name
+											p.has-img
+												img(src="/assets/divider-white-dots.png")
+											//- p=c.artist
+											p.text-center
+												!=c.content
+												
+									//- SMALL ONLY: Info text on blue bg
+									.catalog-info-mobile.show-for-small-only
+										p.mobile-divider
+											img(src="/assets/divider-white-dots.png")
+										h6=c.name
+										.rem-15.mobile-info-container
+											!=c.content
+										p.mobile-divider
+											img(src="/assets/divider-white-dots.png")
+		
+		//=========================
+		// NEWS & EVENTS [PREVIEW] 
+		//=========================
+			//- Only show this section if we have posts?
+			//- if data.posts.results.length
+		.cell.small-12
+			.round-box.red-bg
+				//- Section Header (.sh-news applies modified classes for long text)
+				.grid-x.section-heading-container.sh-news
+					.cell.medium-2.large-3.section-separator.ss-left.hide-for-small-only
+					.cell.small-12.medium-8.large-6.section-heading
+						a(href="/news").home-link
+							h1.blue.squeeze2 News &amp; events
+					.cell.medium-2.large-3.section-separator.ss-right.hide-for-small-only
+					
+				//- Section Content
+				.grid-x.grid-padding-x.pad-news-preview
+					- var i=1
+							each postdata in data.posts.results
+								if i==4
+									.cell.small-12.medium-6.large-4.tb-pad-30.show-for-medium-only
+										+post-preview(postdata)
+								else if i<=3
+									- i++
+									.cell.small-12.medium-6.large-4.tb-pad-30
+										+post-preview(postdata)
+		
+		//====================
+		// ABOUT US [PREVIEW] 
+		//====================
+		.cell.small-12
+			.round-box.blue-bg.about-us-wrapper
+				//- Section Header
+				.grid-x.section-heading-container
+					.cell.medium-3.large-4.section-separator.ss-left.hide-for-small-only
+					.cell.small-12.medium-6.large-4.section-heading
+						//- Style the container to get the h1 targeted
+						a(href="/about").home-link.about-heading
+							h1.blue About Us
+					.cell.medium-3.large-4.section-separator.ss-right.hide-for-small-only
+				//- Section Content
+				.grid-x.grid-padding-x.t-pad-45
+					if AboutUsText[0].content
+						.cell-medium-12.round-box.white-bg
+							//- h1#eclipseBio.pad1rem Eclipse Music Group, LLC is an independent music publishing and artist development company dedicated to identifying and supporting today’s top talent and nurturing the next generation of award-winning songwriters. Founded in 2018 by Nashville native Clay Bradley and investor Kurt Locher, Eclipse brings new-kid-in-town energy and decades-long music industry and business experience to help each artist achieve his or her own professional aspirations.
+							#eclipseBio
+								!=AboutUsText[0].content
+						//- p.text-center.no-marg: a.button.no-marg(href='/about') Meet Our Team
+				.grid-x.grid-padding-x.t-pad-30
+					- var t=1
+						each tm in team
+							if t==4
+								.cell.large-3.medium-4.small-12.tb-pad-15.hide-for-medium-only
+									+about-preview(tm)
+							else if t<4
+								.cell.large-3.medium-4.small-12.tb-pad-15
+									+about-preview(tm)
+							- t++
+		.cell.small-12.hide-for-medium
+			p(style="height: 30px;") &nbsp;
+
+
+block js
+	script.
+		$(function(){
+			$('.fullwidth-container').slick({
+				autoplay: true,
+				autoplaySpeed: 10000,
+				dots: false,
+				infinite: true,
+				prevArrow: $('#goback'),
+				nextArrow: $('#goforward'),
+				speed: 1000,
+				fade: true,
+				slidesToShow: 1,
+			});
+		});

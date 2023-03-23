@@ -1,0 +1,10 @@
+extends ../global
+//- This view will:
+//- 	provide gridding
+//- 	translate variable name from 'data.talent' to 'artist'
+block content
+	.grid-container: .grid-x.align-center
+		.cell.small-12
+			.tb-pad-15
+				.round-box.red-bg
+					+talent-detail(data.talent)

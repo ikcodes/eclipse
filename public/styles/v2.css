@@ -1,0 +1,72 @@
+.slider-name-container {
+  bottom: 0;
+  color: white;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+.slider-name-container p {
+  background-color: black;
+  border-radius: 20px;
+  display: inline-block;
+  font-family: HanleySans, sans-serif;
+  font-size: 140%;
+  padding: 0 13px;
+  text-align: center;
+}
+
+.post-preview-image {
+  /* SASS has 1rem padding :|  */
+  background-position: center;
+  background-size: cover;
+  border-radius: 100%;
+  margin: 0;
+  height: 350px;
+  position: relative;
+}
+.post-preview-image a {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.post-preview .post-preview-block {
+  margin-top: -1.5rem;
+  z-index: 0;
+}
+
+/* MOBILE BREAKPOINT! */
+@media print, screen and (max-width: 39.99875em) {
+  .post-preview-image {
+    height: 300px;
+    width: 100%;
+  }
+}
+
+/* TABLET ONLY BREAKPOINT */
+@media print, screen and (min-width: 40em) and (max-width: 63.99875em) {
+}
+
+.button.white {
+  background-color: #fefefe;
+  color: #1779ba;
+}
+.button.white:hover {
+  background-color: #eeeeee;
+  color: #1678b9;
+}
+
+.archive-text {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+#back-to-news {
+  color: #fefefe;
+  text-decoration: underline;
+}
+#back-to-news:hover {
+  color: #eeeeee;
+}

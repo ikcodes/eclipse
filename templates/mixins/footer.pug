@@ -1,0 +1,100 @@
+mixin footer
+
+	//=================
+	// FOOTER [GLOBAL] 
+	//=================
+	footer
+		.grid-container
+			.grid-x
+				.cell.medium-12#addressLine
+					p
+						img(src="/images/eclipse-symbol-blue.png")
+					p Eclipse Music Group
+					p 2 Music Circle South
+					p Nashville, TN 37203
+					p
+						a(href="mailto: info@eclipsemusicgrp.com") info@eclipsemusicgrp.com
+						
+			.grid-x: .cell.small-12#hoverContainer
+				// Mobile copyright line (two lines)
+				p#copyLine.hide-for-medium  &copy; 2018 Eclipse Music Group. All rights reserved.
+					br
+					a#termsLine(href="/terms").b-pad-60 Terms of Service
+				
+				// Tablet / desktop copyright line (one line with pipe)
+				p#copyLine.show-for-medium &copy; 2018 Eclipse Music Group. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+					a#termsLine(href="/terms") Terms of Service
+					
+	//- The KeystoneJS Content Editor provides support for ks-editable data attributes,
+	//- which generate links to edit content for users who can access Keystone
+	if user && user.canAccessKeystone
+		script(src='/keystone/js/content/editor.js')
+	
+	block js
+	block global_js
+		//=============
+		// JS [GLOBAL] 
+		//=============
+		script.
+			$(function(){	// [GLOBAL JS]
+				
+				// OPEN / CLOSE NAV
+				$('#hamburger-container').click(function(){
+					flipTheBurger();
+				});
+				
+				$(document).keyup(function(e) {	// ESC Key flips the burger
+					if (e.keyCode == 27) { // escape key maps to keycode 27
+						flipTheBurger();
+					}
+				});
+				
+				function flipTheBurger(){	// Toggle nav
+					var $ham = $('#hamburger');
+					var $dnl = $('#desknavLinks');
+					var $mnl = $('#mobilenavLinks');
+					
+					$ham.toggleClass('open');
+					$('#globalNav').addClass('slim');
+					
+					if($mnl.is(":visible")){	// Closing menu
+						$('#content').show();
+						$mnl.slideUp();
+						$dnl.fadeIn();
+						if($ham.hasClass('open')){	// Prevent x bug
+							$ham.removeClass('open');
+						}
+					}else{	// Opening menu
+						$('#content').hide();
+						$mnl.slideDown();
+						$dnl.hide();	// Do NOT fade out here! You'll have to call the function below.
+						//- hideSocials();	// Emergency function for buggy socialLinks behavior
+					}
+				}
+				
+				// Only use if bug persists (slows down animation)
+				//- function hideSocials(){
+				//- 	setTimeout(function(){
+				//- 		if($('#globalNav').hasClass('slim')){
+				//- 			$('#socialIcons').hide();
+				//- 		}
+				//- 	}, 100);
+				//- }
+				
+				// Shrink nav when scrolled down
+				var scrollLength = 150;
+				var $targetElement = '#content';
+				var $nav = $('#globalNav');
+				var $tb = $('.top-bar');
+				
+				$(window).scroll(function(){
+					var scrollTop = $(window).scrollTop();
+					if(scrollTop <= scrollLength){
+						$nav.removeClass('slim');
+					}else{
+						$nav.addClass('slim');
+					}
+				});
+				
+				$(document).foundation();
+			});	// End global js doc ready

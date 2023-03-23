@@ -1,0 +1,69 @@
+include mixins/nav
+include mixins/footer
+include mixins/post-detail
+include mixins/post-preview
+include mixins/talent-detail
+include mixins/talent-preview
+include mixins/about-preview
+include mixins/flash-messages
+
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		//=========
+		// CMS SEO 
+		//=========
+		if SEO
+			each s in SEO
+				meta(name=s.field content=s.value)
+		//=============
+		// End CMS SEO 
+		//=============
+		meta(name="robots" content="index,follow")
+		if locals.pageTitle
+			title=locals.pageTitle+" | Eclipse Music Group"
+		else
+			title="Eclipse Music Group"
+		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+		link(href="/plugins/slick.css" rel="stylesheet" type="text/css")
+		link(href="/plugins/slick-theme.css" rel="stylesheet" type="text/css")
+
+		link(href="/styles/app.css", rel="stylesheet")
+		link(href="/styles/v2.css", rel="stylesheet")
+		
+		//- NO CDN, don't bitch about loading
+		script(src='/plugins/jquery.min.js')
+		script(src='/plugins/foundation.min.js')
+		script(src='/plugins/what-input.js')
+		script(src='/plugins/slick.min.js')
+
+		//- This file provides the default styling for the KeystoneJS Content Editor
+		if user && user.canAccessKeystone
+			link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
+
+		//- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		//- Safely remove this block if you are not targeting IE8
+		//-[if lt IE 9]
+			script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
+			script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
+		//-[endif]
+		block css
+		block head
+
+	//- HTML BODY
+	body
+		+nav
+		//- BODY (Yield to Template content)
+		main#content
+			#loadingAnimation
+			block intro
+			+flash-messages(messages)
+			//================
+			// BEGIN TEMPLATE 
+			//================
+			block content
+			block footer_js
+			+footer

@@ -1,0 +1,103 @@
+// Colors
+$red: #ba352b;
+$percent: 10%;
+$red-trans: lighten($red, $percent);
+$red-darker: darken($red, $percent);
+$blue: #236fa1;
+$blue-trans: lighten($blue, $percent);
+$blue-darker: darken($blue, $percent);
+$light-gray: #ddd;
+$white: #fff;
+$white-trans: lighten($white, $percent);
+$white-darker: darken($white, $percent);
+$black: #000;
+$black-trans: lighten($black, $percent);
+$black-darker: darken($black, $percent);
+
+$opaque-overlay: rgba(221, 221, 221, 0.3);
+$opaque-overlay-red: rgba(186, 54, 43, 0.3);
+$opaque-overlay-blue: rgba(35, 111, 161, 0.3);
+
+//========>  HANLEY FONTS (NEW)  <========//
+@font-face {
+  font-family: "Hanley";
+  src: url("/fonts/HanleySans.otf");
+}
+@font-face {
+  font-family: "HanleySans";
+  src: url("/fonts/HanleySans.otf");
+}
+@font-face {
+  font-family: "HanleyBlock";
+  src: url("/fonts/HanleyBlock.otf");
+}
+
+//========>  PROXIMA FONTS  <========//
+@font-face {
+  font-family: "Proxima";
+  src: url("/fonts/proxima-nova-soft-regular-webfont.ttf");
+}
+@font-face {
+  font-family: "Proxima Medium";
+  src: url("/fonts/proxima-nova-soft-medium-webfont.ttf");
+}
+@font-face {
+  font-family: "Proxima Semibold";
+  src: url("/fonts/proxima-nova-soft-regular-semibold.ttf");
+}
+@font-face {
+  font-family: "Proxima Bold";
+  src: url("/fonts/proxima-nova-soft-bold-webfont.ttf");
+}
+
+$trans-10-white: rgba(255, 255, 255, 0.1);
+$trans-20-white: rgba(255, 255, 255, 0.2);
+$trans-30-white: rgba(255, 255, 255, 0.3);
+$trans-40-white: rgba(255, 255, 255, 0.4);
+$trans-50-white: rgba(255, 255, 255, 0.5);
+$trans-60-white: rgba(255, 255, 255, 0.6);
+$trans-70-white: rgba(255, 255, 255, 0.7);
+$trans-80-white: rgba(255, 255, 255, 0.8);
+$trans-90-white: rgba(255, 255, 255, 0.9);
+$trans-10-black: rgba(0, 0, 0, 0.1);
+$trans-20-black: rgba(0, 0, 0, 0.2);
+$trans-30-black: rgba(0, 0, 0, 0.3);
+$trans-40-black: rgba(0, 0, 0, 0.4);
+$trans-50-black: rgba(0, 0, 0, 0.5);
+$trans-60-black: rgba(0, 0, 0, 0.6);
+$trans-70-black: rgba(0, 0, 0, 0.7);
+$trans-80-black: rgba(0, 0, 0, 0.8);
+$trans-90-black: rgba(0, 0, 0, 0.9);
+$trans-100: rgba(0, 0, 0, 0);
+
+$shadow: -4px 4px 20px 5px rgba(0, 0, 0, 0.15);
+$shadow2: -2px 2px 20px -5px rgba(0, 0, 0, 0.15);
+
+$text-shadow: -4px 3px $trans-20-black;
+$text-shadow2: -5px 4px $trans-30-black;
+
+$light-gradient: linear-gradient(to right, #fff, #ccc);
+
+// Quick set transition speeds for nav
+$transition-speed: 250ms;
+$transition-speed-fast: calc($transition-speed / 2);
+
+// I think Foundation uses these
+$heading-font: "Hanley";
+$body-font: "Proxima";
+
+// Custom
+$proxima: "Proxima";
+$proxima-bold: "Proxima Bold";
+$hanley: "HanleySans";
+
+// Default Fonts
+$hanley-sans: "Hanley";
+$hanley-block: "HanleyBlock";
+$hanley-block-inline: "HanleyBlockInline";
+$hanley-sans: "HanleySans";
+$hanley-sans-inline: "HanleySansInline";
+$hanley-script: "HanleyScript";
+$hanley-signature: "HanleySignature";
+$hanley-slim: "HanleySlim";
+$hanley-slim-serif: "HanleySlimSerif";

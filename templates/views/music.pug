@@ -1,0 +1,43 @@
+extends ../global
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12.tb-pad-45
+		.round-box.blue-bg
+		
+			//- Section Header (Top section)
+			.grid-x.section-heading-top
+				.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-left
+				.cell.small-12.medium-6.large-4.section-heading
+					h1.blue Music
+				.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-right
+			
+			//- Section Content
+			.grid-x.grid-padding-x.tb-pad-30
+				each c in music
+					- var cat_bg
+						if c.image.exists
+							- cat_bg = c.image.url
+						else
+							- cat_bg = '/assets/coming-soon.jpg'
+					.cell.large-3.medium-4.small-12
+						p.catalog-bg-container
+							.catalog-bg(style="background-image: url("+cat_bg+");")
+							
+								//- Medium only
+								.catalog-info.show-for-medium
+									p.project-name=c.name
+									p.has-img
+										img(src="/assets/divider-white-dots.png")
+										//- img(src="/assets/line-3-red.png")
+									//- p=c.artist
+									p.text-center
+										!=c.content
+										
+						//- SMALL ONLY: Info text on blue bg
+						.catalog-info-mobile.show-for-small-only
+							p.mobile-divider
+								img(src="/assets/divider-white-dots.png")
+							h6=c.name
+							p.no-marg.rem-15.mobile-info-container
+								!=c.content
+							p.mobile-divider
+								img(src="/assets/divider-white-dots.png")

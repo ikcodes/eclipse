@@ -1,0 +1,16 @@
+extends ./../global
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12.tb-pad-45: .round-box.red-bg
+		
+		//- Section Header (Top section)
+		.grid-x.section-heading-top
+			.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-left
+			.cell.small-12.medium-6.large-4.section-heading
+				h1.red Talent
+			.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-right
+		
+		//- Section Content
+		.grid-x.grid-padding-x.b-pad-30
+			each artist in locals.talent
+				.cell.large-3.medium-4.small-12.tb-pad-15
+					+talent-preview(artist)

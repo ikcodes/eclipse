@@ -1,0 +1,53 @@
+extends ../global
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12.tb-pad-45: .round-box.red-bg
+		//- Section Header (Top section)
+		.grid-x.sh-news
+			.cell.hide-for-small-only.medium-2.large-3.section-separator.ss-left
+			.cell.small-12.medium-8.large-6.section-heading
+				h1.red News &amp; Events
+			.cell.hide-for-small-only.medium-2.large-3.section-separator.ss-right
+
+		//- Section Content
+		.grid-x.grid-padding-x
+			each postdata in data.posts.results
+				.cell.small-12.medium-6.large-4.tb-pad-30
+					+post-preview(postdata)
+		
+		//- View Archived Posts section
+		.grid-x.grid-padding-x.align-center.text-center.t-marg-15
+		
+			//- Left leading lines
+			.cell.medium-auto.show-for-medium.hide-for-large
+				img(src="/assets/white-stub-4-left.png").t-marg-15
+			.cell.large-auto.show-for-large
+				img(src="/assets/white-stub-2-left.png").t-marg-15
+				
+			//- Actual button
+			.cell.medium-shrink.small-12
+				a.button.white(href="/news-archived") View Archived Posts
+			
+			//- Right leading lines
+			.cell.medium-auto.show-for-medium.hide-for-large
+				img(src="/assets/white-stub-4-right.png").t-marg-15
+			.cell.large-auto.show-for-large
+				img(src="/assets/white-stub-2-right.png").t-marg-15
+			
+
+block footer_js
+	script(type="text/javascript").
+		$(function(){
+			
+			function makeArtistsCircularAgain(){
+				var $images = $(".post-preview-image")
+				$.each($images, function(){
+					$(this).css('height', $(this).width())
+				})
+			}
+			
+			// Run onload and on Resize
+			makeArtistsCircularAgain();
+			$(window).resize(function(){
+				makeArtistsCircularAgain();
+			})
+		})

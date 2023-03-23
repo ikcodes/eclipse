@@ -1,0 +1,32 @@
+extends ../global
+
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12: .tb-pad-15: .round-box.blue-bg
+		// Header Content
+		.grid-x.tm-detail
+			.cell.medium-6.large-4
+				if data.teammember.image.exists
+					.tm-image
+						p
+							img(src=data.teammember._.image.fit(750,450))
+
+				p.no-marg.t-pad-45.text-center.show-for-medium: a.no-marg.button(href='/about') Back to Team
+			
+			// Main Content
+			.cell.medium-6.large-8.round-box.white-bg
+				.pad1rem
+					.grid-x
+						.cell.smal-12
+							h1=data.teammember.name.first+" "+data.teammember.name.last
+							if data.teammember.role
+								h6.blue.b-marg-30=data.teammember.role
+
+					.grid-x
+						.cell.small-12
+							!= data.teammember.bio
+				
+				// Mobile-only external links
+				.grid-x.hide-for-medium.align-center
+					.cell.small-12
+						p.no-marg.text-center: a.no-marg.button(href='/about') Back to Team
+		

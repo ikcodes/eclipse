@@ -1,0 +1,634 @@
+/*========>  SECTION SEPARATORS  <=======*/
+.section-heading-container {
+  margin-top: -70px;
+  @include breakpoint(small only) {
+    margin-top: -53px;
+  }
+}
+.section-heading-top {
+  margin-bottom: 15px;
+  @include breakpoint(medium up) {
+    margin-bottom: 35px;
+  }
+}
+.section-separator {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 6px;
+  margin-top: 36px;
+  @include breakpoint(medium only) {
+    margin-top: 37px;
+  }
+}
+.ss-right {
+  background-image: url("/assets/white-separator-right.png");
+  background-position: right top;
+  @include breakpoint(medium only) {
+    background-image: url("/assets/white-separator-right-stubby.png");
+    border-radius: 2px; // Poor cure for the stubby
+  }
+}
+.ss-left {
+  background-image: url("/assets/white-separator-left.png");
+  background-position: left top;
+  @include breakpoint(medium only) {
+    background-image: url("/assets/white-separator-left-stubby.png");
+    border-radius: 2px;
+  }
+}
+.section-heading {
+  background-image: url("/assets/white-diamond-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 75px;
+  text-align: center;
+  h1 {
+    font-family: $hanley-block;
+    margin: 10px auto 0;
+    @include breakpoint(small only) {
+      font-size: 3rem;
+    }
+  }
+}
+// Comes AFTER the rule above!
+.about-heading {
+  h1 {
+    font-size: 2.9rem;
+    letter-spacing: -2px;
+    line-height: 64px;
+    @include breakpoint(small only) {
+      font-size: 2.7rem;
+    }
+  }
+}
+// 'STUBBY' CLASSES => NEWS ONLY
+.sh-news {
+  h1 {
+    @include breakpoint(medium only) {
+      font-size: 2.5rem;
+      letter-spacing: 0px;
+      margin-top: 16px;
+    }
+    @include breakpoint(small only) {
+      font-size: 2rem;
+      letter-spacing: 0px;
+      margin-top: 20px;
+    }
+  }
+  .section-heading {
+    background-image: url("/assets/white-diamond-bg-news.png");
+  }
+  .ss-right {
+    background-image: url("/assets/white-stub-4-right.png");
+    border-radius: 4px;
+    @include breakpoint(medium only) {
+      // Lines drop on small
+      background-image: url("/assets/white-stub-6-right.png");
+      height: 3px;
+      margin-top: 37px;
+    }
+  }
+  .ss-left {
+    background-image: url("/assets/white-stub-4-left.png");
+    border-radius: 4px;
+    @include breakpoint(medium only) {
+      // Lines drop on small
+      background-image: url("/assets/white-stub-6-left.png");
+      height: 3px;
+      margin-top: 37px;
+    }
+  }
+}
+a.home-link {
+  &:hover {
+    text-decoration: none;
+    h1 {
+      color: $blue;
+      transition: color $transition-speed ease-in-out;
+    }
+    h1.blue {
+      color: $red;
+    }
+  }
+}
+
+/*========>  HOMEPAGE SLICK SLIDER  <========*/
+.fullwidth-container {
+  margin: 0 auto;
+  width: 100%;
+  .fullwidth-bg {
+    background-color: $trans-30-black;
+    background-size: cover;
+    background-position: center top;
+    height: 500px;
+    @include breakpoint(large up) {
+      height: 650px;
+    }
+  }
+}
+.homepage-slider {
+  margin: -100px 0 50px; // Re-un-offset nav
+  @include breakpoint(small only) {
+    margin: 0 0 3rem 0;
+    .fullwidth-container .fullwidth-bg {
+      height: 300px;
+    }
+  }
+}
+.homepage-slider-controls {
+  position: relative;
+  .hps-circle {
+    bottom: 260px;
+    background-size: cover;
+    height: 30px;
+    position: absolute;
+    width: 30px;
+    z-index: 3;
+    @include breakpoint(large up) {
+      bottom: 330px;
+    }
+    @include breakpoint(small only) {
+      bottom: 180px;
+    }
+  }
+  .hps-prev {
+    background-image: url("/assets/homepage-slider-prev.png");
+    left: 2%;
+    &:hover {
+      background-image: url("/assets/homepage-slider-prev-hover.png");
+    }
+  }
+  .hps-next {
+    background-image: url("/assets/homepage-slider-next.png");
+    right: 2%;
+    &:hover {
+      background-image: url("/assets/homepage-slider-next-hover.png");
+    }
+  }
+}
+// See this instead on mobile
+#heroLogo {
+  margin: 3rem auto;
+  padding: 0 3rem;
+  @include breakpoint(medium up) {
+    display: none;
+  }
+}
+
+/*========>  ARTIST STUFF  <========*/
+.artist-icon-container {
+  position: relative;
+  .artist-icon {
+    bottom: 1%;
+    left: 10%;
+    max-height: 40px;
+    position: absolute;
+    @include breakpoint(small only) {
+      bottom: 2px;
+      left: 21%;
+    }
+  }
+  .artist-icon-detail {
+    bottom: 5%;
+    left: 10%;
+    max-height: 40px;
+    position: absolute;
+  }
+}
+.artist-img-container {
+  text-align: center;
+  img {
+    border-radius: 100%;
+  }
+  @include breakpoint(large up) {
+    margin: 0 1rem 0 0;
+  }
+}
+.artist-name {
+  color: $white;
+  padding: 15px 0;
+  text-align: center;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.artist-detail {
+  h1 {
+    font-family: $hanley-block;
+    @include breakpoint(medium only) {
+      font-size: 2rem;
+    }
+    @include breakpoint(small only) {
+      margin-bottom: 0;
+    }
+  }
+  // img{
+  // @include breakpoint(medium up){
+  // padding-right: 1rem;
+  // }
+  // }
+  .artist-externals-mobile {
+    text-align: center;
+    .button {
+      background-color: $blue;
+      color: $white;
+      margin: 1rem auto 0;
+      &:hover {
+        background-color: darken($blue, 10%);
+        color: $white;
+      }
+    }
+    @include breakpoint(small only) {
+      margin-bottom: 2rem;
+    }
+  }
+  .artist-social {
+    border-radius: 20px;
+    height: 40px;
+    margin: 0 3px;
+    &:hover {
+      background-color: $trans-20-black;
+    }
+    @include breakpoint(medium only) {
+      height: 20px;
+    }
+  }
+  .button {
+    background-color: $white;
+    color: $black;
+    &:hover {
+      background-color: darken($white, 2%);
+      color: $blue;
+    }
+  }
+  .link-container {
+    text-align: center;
+    @include breakpoint(large up) {
+      text-align: right;
+    }
+  }
+}
+
+/*========>  NEWS / POST STUFF  <========*/
+.post-preview {
+  .post-preview-image {
+    margin: 1rem;
+    img {
+      border-radius: 100%;
+      &:hover {
+        box-shadow: $shadow;
+      }
+    }
+  }
+  .post-preview-block {
+    background-color: $white;
+    border-radius: 15px;
+    box-shadow: $shadow;
+    color: $black;
+    font-weight: 600;
+    margin: -2rem 0 0;
+    padding: 1.25rem 0.5rem 1rem 1rem;
+    a {
+      font-weight: 300;
+      margin-left: 5px;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 22px;
+      margin: 0;
+      @include breakpoint(medium up) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+.pad-news-preview {
+  padding: 0 0 45px;
+  @include breakpoint(medium up) {
+    padding: 30px 0 45px;
+  }
+}
+.blue-border-no-hover {
+  @include breakpoint(small only) {
+    border: 4px solid $blue;
+  }
+}
+.post-detail {
+  h3 {
+    @include breakpoint(medium up) {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .button {
+    @include breakpoint(small only) {
+      margin-top: 20px;
+    }
+    @include breakpoint(medium up) {
+      background-color: $white;
+      color: $black;
+      &:hover {
+        background-color: darken($white, 2%);
+        color: $blue;
+      }
+    }
+  }
+  .post-author {
+    margin: 0;
+  }
+  .post-date {
+    color: $blue;
+    margin: 0;
+    @include breakpoint(small only) {
+      text-align: center;
+    }
+  }
+  .post-image-desktop {
+    padding: 0 0 0 1rem;
+    img {
+      border-radius: 8px;
+    }
+  }
+  .post-image-mobile {
+    border-radius: 8px;
+    text-align: center;
+  }
+}
+
+/*========>  MUSIC STUFF  <========*/
+// Square catalog images w/ info on hover.
+//  Ideally, width height are always EQUAL.
+
+// Just the p tag
+p.catalog-bg-container {
+  margin: 0;
+  max-height: 260px;
+  text-align: center;
+}
+
+// SHARED
+.catalog-bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 80vw;
+  margin: 0.5rem -0.5rem;
+  text-align: center;
+  a {
+    // The a's really need this!!
+    border-radius: 5px;
+    color: $trans-80-white;
+    &:hover &:focus {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+  img {
+    display: none;
+  }
+  p {
+    color: $white;
+    margin: 0;
+    // font-family: $hanley-block;
+  }
+  // INTERIOR OF CATALOG CONTENT
+  .catalog-info {
+    p {
+      margin: 0;
+    }
+    a {
+      color: $trans-100;
+    }
+  }
+  .project-name {
+    font-family: $hanley;
+  }
+
+  // DESKTOP ONLY
+  @include breakpoint(medium up) {
+    background-size: cover;
+    max-height: 260px;
+    // margin: 0.5rem 1rem 0.5rem 0;
+    .catalog-info {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      padding: 45px 0;
+      //==============
+      // HOVER STUFF!
+      //==============
+      a {
+        font-weight: 600;
+      }
+      img {
+        margin: 0 auto;
+        padding: 0.3rem 0 0.4rem;
+      }
+      p {
+        color: $trans-100;
+        padding: 0 1rem;
+        margin: 0;
+      }
+      &:hover {
+        background-color: $trans-80-black;
+        cursor: ns-resize;
+        a {
+          color: $trans-90-white;
+          &:hover {
+            color: $white;
+          }
+        }
+        a:visited,
+        a:active {
+          color: $trans-90-white;
+        }
+        img {
+          display: block;
+        }
+        p {
+          color: $white;
+          display: block;
+        }
+      }
+    }
+  }
+  // MEDIUM ONLY (SIZING)
+  @include breakpoint(medium only) {
+    height: 30vw;
+    width: 30vw;
+  }
+}
+// MOBILE ONLY ==> THIS ONE, It's a separate class.
+.catalog-info-mobile {
+  margin: 1rem 0 0.5rem;
+
+  h6,
+  p,
+  a {
+    text-align: center;
+  }
+
+  a,
+  a:visited,
+  a:active {
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    &:hover &:focus {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+  p {
+    margin-bottom: 0.25rem;
+  }
+  .mobile-divider {
+    margin: 0 5rem;
+  }
+  .mobile-info-container {
+    p {
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+@include breakpoint(medium up) {
+  display: none;
+}
+/*========>  HOMEPAGE TEAM  <========*/
+.about-us-wrapper {
+  padding-bottom: 30px;
+}
+
+.team-container {
+  .red-separator {
+    margin: 0 0 3rem;
+    padding: 0;
+    text-align: center;
+    @include breakpoint(medium only) {
+      margin: 0 0 2rem;
+    }
+    @include breakpoint(small only) {
+      margin: 0;
+      padding: 1rem 0 2rem;
+    }
+  }
+  .first-separator {
+    padding: 15px 0;
+    @include breakpoint(large up) {
+      display: none;
+      padding: 15px;
+    }
+  }
+  p {
+    line-height: 1.5rem;
+  }
+  @include breakpoint(large up) {
+    font-size: 1.15rem;
+  }
+}
+
+.tm-name {
+  color: $white;
+  text-align: center;
+  padding: 15px 0 0;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// This was changed to a HTML RTE
+#eclipseBio {
+  font-family: $proxima;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 0;
+  padding: 1rem;
+  @include breakpoint(large up) {
+    font-size: 1.2em;
+    line-height: 21px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+// TEAM MEMBER DETAIL
+.tm-detail {
+  .button {
+    @include breakpoint(medium up) {
+      background-color: $white;
+      color: $black;
+      &:hover {
+        background-color: darken($white, 2%);
+        color: $blue;
+      }
+    }
+  }
+  .tm-image {
+    p {
+      margin-right: 1rem;
+      text-align: center;
+    }
+    img {
+      border-radius: 8px;
+    }
+  }
+  @include breakpoint(small only) {
+    h6 {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+/*========>  CONTACT PAGE STUFF  <========*/
+.contact-form {
+  input {
+    padding: 0 15px;
+  }
+  label {
+    margin: 0 15px;
+  }
+  select {
+    padding: 0 30px 0 15px;
+  }
+  textarea {
+    // border-radius: 5px;
+    padding: 10px 15px;
+  }
+}
+.contact-success-img {
+  text-align: center;
+  img {
+    border-radius: 100%;
+    @include breakpoint(medium only) {
+      height: 300px;
+      width: 300px;
+    }
+    @include breakpoint(large up) {
+      height: 430px;
+      width: 430px;
+    }
+  }
+}
+.red-sep-contact {
+  width: 100px;
+}
+
+// CONTACT PAGE MAP
+.iframe-container {
+  border-radius: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+  padding-top: 250px;
+  position: relative;
+  iframe {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

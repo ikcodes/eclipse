@@ -1,0 +1,57 @@
+mixin nav
+	//======================
+	// DESKTOP NAV [GLOBAL] 
+	//======================
+	nav#globalNav(role="navigation")
+		#hamburger-container
+			#hamburger
+				span
+				span
+				span
+	
+		.grid-container: .top-bar.grid-x
+			
+			//- LOGO
+			.cell.small-6.medium-4.large-2
+				a(href="/")
+					img(src="/images/eclipse-logo-color.png")#navLogo
+			.cell.medium-8.large-10.show-for-medium-up
+				.grid-x
+				
+					//- SOCIAL ICONS
+					.cell.large-12
+						ul#socialIcons
+							a(href="https://www.instagram.com/eclipsemusicgrp/" target="_blank")
+								li.desknav-social-icon
+									img(src="/assets/social-icon-insta.png")
+							a(href="https://www.facebook.com/eclipsemusicgrp/" target="_blank")
+								li.desknav-social-icon
+									img(src="/assets/social-icon-fb.png")
+							a(href="https://www.twitter.com/eclipsemusicllc" target="_blank")
+								li.desknav-social-icon
+									img(src="/assets/social-icon-twitter.png")
+					
+					//- DESK NAV LINKS
+					.cell.large-12
+						ul#desknavLinks
+							each link in navLinks
+								li(class=(section == link.key ? 'active' : null))
+									a(href=link.href)=link.label
+		
+		//============
+		// MOBILE NAV 
+		//============
+		//- Edit nav links in /routes/middleware.js
+		#mobilenavLinks.text-center
+			ul
+				each link in navLinks
+					li(class=(section == link.key ? 'active' : null))
+						a(href=link.href)=link.label
+			
+			p#mobilenavSocials
+				a.mobilenav-social-icon(href="https://www.instagram.com/eclipsemusicgrp/")
+					img(src="/assets/social-icon-insta.png" target="_blank")
+				a.mobilenav-social-icon(href="https://www.facebook.com/eclipsemusicgrp/")
+					img(src="/assets/social-icon-fb.png" target="_blank")
+				a.mobilenav-social-icon(href="https://www.twitter.com/eclipsemusicllc")
+					img(src="/assets/social-icon-twitter.png" target="_blank")

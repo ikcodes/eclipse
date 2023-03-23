@@ -1,0 +1,22 @@
+mixin post-preview(post)
+
+	// Post preview mixin
+	.post-preview: .grid-x
+		if post.image.exists
+			.cell.align-center
+				.post-preview-image(style="background-image: url('"+post.image.secure_url+"')")
+					a(href='/news/post/' + post.slug)
+		else
+			.post-preview-image
+				a(href='/news/post/' + post.slug)
+					img(src='/assets/coming-soon.jpg')
+		
+		.post-preview-block.cell.small-12
+			if post.previewText
+				p=post.previewText+'. '
+					if post.slug
+						a(href='/news/post/' + post.slug) More info
+			else
+				p=post.title+'. '
+					if post.slug
+						a(href='/news/post/' + post.slug) More info

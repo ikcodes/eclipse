@@ -1,0 +1,23 @@
+mixin talent-preview(artist)
+	a(href="talent/"+artist.slug)
+		if artist.image.exists
+			.featurePhoto(style="background-image: url('"+artist.image.url+"');")
+				.feature-photo-border
+		else
+			.featurePhoto(style="background-image: url('/assets/coming-soon.jpg');")
+				.feature-photo-border
+	.artist-icon-container
+		//- 5 categories of Talent
+		if artist.category=="Management"
+			img(src='/assets/artist-icon-management.png').artist-icon
+		else if artist.category=="Publishing"
+			img(src='/assets/artist-icon-publishing.png').artist-icon
+		else if artist.category=="Catalog Writer"
+			img(src='/assets/artist-icon-catalog.png').artist-icon
+		else if artist.category=="Management & Publishing"
+			img(src='/assets/artist-icon-mp.png').artist-icon
+		else if artist.category=="Management & Catalog Writer"
+			img(src='/assets/artist-icon-mc.png').artist-icon
+			
+	a(href="talent/"+artist.slug).no-decoration
+		h5.artist-name=artist.name.first+" "+artist.name.last

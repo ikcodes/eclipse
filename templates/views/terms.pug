@@ -1,0 +1,16 @@
+extends ../global
+
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12.medium-11.large-10.t-pad-45.b-pad-30
+		.round-box.blue-bg
+			// Section Content
+			.grid-x.grid-padding-x.t-pad-15
+				.cell.small-12.round-box.white-bg
+					if content[0].name
+						h1.hanley-block.text-center=content[0].name
+						p.text-center
+							img(src="/assets/red-separator.png")
+					if content[0].terms
+						.grid-x.grid-padding-x.tb-pad-15.align-center
+							.cell.small-11
+								!=content[0].terms

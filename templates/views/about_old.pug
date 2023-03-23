@@ -1,0 +1,72 @@
+extends ./../global
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12.tb-pad-45: .round-box.blue-bg
+	
+		// Section Header (Top section)
+		.grid-x.section-heading-top
+			.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-left
+			.cell.small-12.medium-6.large-4.section-heading
+				h1.blue.squeeze2 About Us
+			.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-right
+		
+		// Section Content
+		.grid-x.grid-padding-x.align-center.round-box-inner.team-container
+			.cell.large-5.medium-6
+				p.text-center
+					img.featureLogo(src="/images/eclipse-logo-color.png")
+			.cell.large-7.medium-6
+				p Eclipse Music Group, LLC is an independent music publishing and artist development company dedicated to identifying and supporting today’s top talent and nurturing the next generation of award-winning songwriters. Founded in 2018 by Nashville native Clay Bradley and investor Kurt Locher, Eclipse brings new-kid-in-town energy and decades-long music industry and business experience to help each artist achieve his or her own professional aspirations.
+				p.show-for-large.tb-pad-15: img(src="/assets/red-separator.png")
+			.cell.small-12
+				p.red-separator.first-separator
+					img(src="/assets/red-separator.png")
+
+			//- ITERATE TEAM MEMBERS
+			- var n = -1;
+			while team[n+1]
+				- n++;
+				//- RIGHT aligned image
+				.grid-x.grid-padding-x.align-center
+					// Desktop Only
+					.cell.large-8.medium-6.show-for-medium
+						if team[n].bio
+							!=team[n].bio.substr(0, 400) + '...  '
+							a(href="/about/"+team[n].slug) read more
+							| .
+					.cell.large-4.medium-6
+						p.text-center
+							if team[n].image.exists
+								img.round(src=team[n]._.image.fit(250, 250))
+							else
+								img.coming-soon.round(src="/assets/coming-soon.jpg")
+								
+					// Mobile Only
+					.cell-small-12.hide-for-medium
+						if team[n].bio
+							!=team[n].bio.substr(0, 500) + '...  '
+							a(href="/about/"+team[n].slug) read more
+							| .
+					.cell.small-12
+						if team[n].bio && team[n+1]
+							p.red-separator
+								img(src="/assets/red-separator.png")
+				
+				//- LEFT aligned image
+				- n++;
+				if team[n]
+					.grid-x.grid-padding-x.align-center
+						.cell.large-4.medium-6
+							p.no-marg.text-center
+								if team[n].image.exists
+									img.round(src=team[n]._.image.fit(250, 250))
+								else
+									img.coming-soon.round(src="/assets/coming-soon.jpg")
+						.cell.large-8.medium-6
+							if team[n].bio
+								!=team[n].bio.substr(0, 500) + '...   '
+								a(href="/about/"+team[n].slug) read more
+								| .
+						if team[n].bio && team[n+1].bio
+							.cell.small-12
+								p.red-separator
+									img(src="/assets/red-separator.png")

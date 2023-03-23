@@ -1,0 +1,67 @@
+mixin talent-detail(artist)
+	// Header Content
+	.grid-x.grid-padding-x.artist-detail
+		.cell.medium-6.large-4
+			.artist-icon-container
+				if artist.image.exists
+					p.artist-img-container
+						img(src=artist._.image.fit(750,450))
+				else
+					img(src="/assets/coming-soon.jpg").round
+				//- 5 categories of Talent
+				if artist.category=="Management"
+					img(src='/assets/artist-icon-management.png').artist-icon-detail
+				else if artist.category=="Publishing"
+					img(src='/assets/artist-icon-publishing.png').artist-icon-detail
+				else if artist.category=="Catalog Writer"
+					img(src='/assets/artist-icon-catalog.png').artist-icon-detail
+				else if artist.category=="Management & Publishing"
+					img(src='/assets/artist-icon-mp.png').artist-icon
+				else if artist.category=="Management & Catalog Writer"
+					img(src='/assets/artist-icon-mc.png').artist-icon
+				
+			p.t-pad-30.b-pad-15.show-for-large
+			if artist.websiteLink
+				p.no-marg.text-center.show-for-medium: a.no-marg.button(href="http://"+artist.websiteLink target="_blank") &nbsp; Visit Web Site &nbsp; 
+			p.no-marg.text-center.show-for-medium: a.no-marg.button(href='/talent') Back to Talent
+		
+		// Main Content
+		.cell.medium-6.large-8.round-box.white-bg
+			.pad1rem
+				.grid-x
+					.cell.medium-8.large-9
+						h1=artist.name.first+" "+artist.name.last
+						if artist.category
+							h6.b-marg-30.red=artist.category
+					.cell.medium-4.large-3.show-for-medium
+						p.link-container
+							if artist.SocialLinks.instagram
+								a(href="https://"+artist.SocialLinks.instagram target="_blank")
+									img(src="/assets/social-icon-insta.png").artist-social
+							if artist.SocialLinks.facebook			
+								a(href="https://"+artist.SocialLinks.facebook target="_blank")
+									img(src="/assets/social-icon-fb.png").artist-social
+							if artist.SocialLinks.twitter			
+								a(href="https://"+artist.SocialLinks.twitter target="_blank")
+									img(src="/assets/social-icon-twitter.png").artist-social
+				.grid-x
+					.cell.small-12
+						!= artist.bio
+			
+			// Mobile-only external links
+			.grid-x.hide-for-medium.align-center
+				.cell-small-12.artist-externals-mobile
+					p.text-center
+						if artist.SocialLinks.instagram
+							a(href="https://"+artist.SocialLinks.instagram target="_blank")
+								img(src="/assets/social-icon-insta.png").artist-social
+						if artist.SocialLinks.facebook			
+							a(href="https://"+artist.SocialLinks.facebook target="_blank")
+								img(src="/assets/social-icon-fb.png").artist-social
+						if artist.SocialLinks.twitter			
+							a(href="https://"+artist.SocialLinks.twitter target="_blank")
+								img(src="/assets/social-icon-twitter.png").artist-social
+					if artist.websiteLink
+						p.no-marg.text-center: a.no-marg.button(href="http://"+artist.websiteLink target="_blank") &nbsp; Visit Web Site &nbsp; 
+					p.no-marg.text-center: a.no-marg.button(href='/talent') Back to Talent
+	

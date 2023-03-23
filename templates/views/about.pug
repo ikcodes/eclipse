@@ -1,0 +1,23 @@
+extends ./../global
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12.t-pad-45.b-pad-30
+		.round-box.blue-bg
+			// Section Header (Top section)
+			.grid-x.section-heading-top
+				.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-left
+				.cell.small-12.medium-6.large-4.section-heading.about-heading
+					h1.blue About Us
+				.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-right
+			
+			// Section Content
+			.grid-x.grid-padding-x.t-pad-15
+				if AboutUsText[0].content
+						.cell-medium-12.round-box.white-bg
+							//- h1#eclipseBio.pad1rem Eclipse Music Group, LLC is an independent music publishing and artist development company dedicated to identifying and supporting today’s top talent and nurturing the next generation of award-winning songwriters. Founded in 2018 by Nashville native Clay Bradley and investor Kurt Locher, Eclipse brings new-kid-in-town energy and decades-long music industry and business experience to help each artist achieve his or her own professional aspirations.
+							#eclipseBio
+								!=AboutUsText[0].content
+			.grid-x.grid-padding-x.t-pad-60.b-pad-15
+					each tm in team
+						.cell.large-3.medium-4.small-12
+							+about-preview(tm)
+	

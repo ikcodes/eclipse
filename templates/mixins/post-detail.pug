@@ -1,0 +1,38 @@
+mixin post-detail(post)
+	// Header Content
+	.grid-x.post-detail
+		//- .cell.medium-6.large-4
+			//- p.no-marg.text-center.show-for-medium: a.no-marg.button(href='/talent') Back to News
+		
+		// Main Content
+		.cell.small-12.medium-7.large-8.round-box.white-bg.blue-border-no-hover
+			.pad1rem
+				.grid-x
+					.cell.small-12
+						h3=post.title
+					.cell
+						//- if post.publishedDate
+							p.post-date=post._.publishedDate.format('MMMM Do, YYYY')
+						if post.image.exists
+							img.post-image-mobile(src=post._.image.fit(125, 125)).hide-for-medium
+							
+				.grid-x
+					.cell.small-12.t-pad-30
+						!= post.content.extended
+					.cell.small-12.hide-for-medium
+						p.no-marg.text-center: a.no-marg.button(href='/news') Back to News
+						
+		// Outside Box content [IMAGE]
+		.cell.medium-5.large-4.show-for-medium
+			if post.image.exists
+				p.post-image-desktop
+					img(src=post.image.url)
+			else
+				p.post-image-desktop
+					img(src="/assets/coming-soon.jpg")
+					
+			// Back button (desktop)
+			.grid-x.align-center.tb-pad-30
+				.cell-small-12
+					p.no-marg.text-center: a.no-marg.button(href='/news') Back to News
+	

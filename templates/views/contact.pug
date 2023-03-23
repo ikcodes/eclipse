@@ -1,0 +1,60 @@
+extends ./../global
+block content
+	.grid-container: .grid-x.align-center: .cell.small-12.tb-pad-45: .round-box.blue-bg: .round-box.white-bg
+		if !enquirySubmitted
+			// SECTION HEADING
+			.grid-x.section-heading-top
+				.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-left
+				.cell.small-12.medium-6.large-4.section-heading
+					h1.red Contact
+					p.text-center
+						img(src="/assets/red-separator.png").red-sep-contact
+				.cell.hide-for-small-only.medium-3.large-4.section-separator.ss-right
+			// CMS BLOCK ONE
+			.grid-x: .cell.small-12.tb-pad-15
+					p.rem-125.text-center.black=ContactUsText[0].textTop
+			// MAIN CONTACT FORM
+			form(method='post')
+				.grid-x.grid-padding-x
+					.form-group.cell.medium-6
+						input(type='hidden' name='action' value='contact')
+						label Name
+						input(required type='text' name='name' placeholder="Your Name" value=formData['name']).form-control
+					.form-group.cell.medium-6
+						label Email
+						input(required type='email' name='email' placeholder="name@example.com" value=formData.email).form-control
+					.form-group.cell.medium-6
+						label Phone
+						input(required type='text' name='phone' value=formData.phone placeholder='Phone Number').form-control
+					.form-group.cell.medium-6
+						label What are you contacting us about?
+						select(name='enquiryType' placeholder="" style="border-radius: 8px;").form-control
+							each typ in enquiryTypes
+								option(value=typ.value selected=formData.enquiryType == typ.value)=typ.label
+					.form-group.cell.small-12
+						label Message
+						textarea(required name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+					.form-actions.cell.small-12.text-center.t-marg-15
+						button(type='submit').button.wide-button Submit
+			
+			
+
+		else
+			// CONTACT FORM SUBMITTED
+			.contact-success
+				h2.text-center.t-pad-30 Thanks!
+					br
+					img(src="/assets/red-separator.png")
+				p.text-center.rem-125 You'll hear from us shortly. 
+					br
+					| In the meantime, check out our:
+				.grid-x.grid-padding-x.align-center
+					.cell.medium-6.tb-pad-30
+						h3.text-center
+							a(href="/talent").red Talent
+					
+					.cell.medium-6.tb-pad-30
+						h3.text-center
+							a(href="/music").blue Music
+			
+			
