@@ -4,8 +4,6 @@ A Keystone.js-built marketing site for Eclipse Music Group.
 
 KeystoneJS Docs: https://v4.keystonejs.com/documentation/
 
-This site uses **_VERSION 4_**. V5 saw major changes so be sure to work in accordance with V4.
-
 This site is built in MVC architecture. Models pull data from Mongo in JSON and use routes/views
 to populate the frontend. Use Keystone ('_site_url_/keystone') to access the database, or bash in
 and run mongo. db name is eclipse, runs on a web socket, on port 27017.
@@ -20,12 +18,13 @@ Frontend templates are in pug. Run gulp to compile SASS.
   -> Keystone.js
 - MongoDB
 
-### Dev process
+### CMS
 
-Unfortunately, this site was built in 2017, which means the versions of gulp, keystone, etc. are all woefully out-of-date. It still works great in the wild, but you may encounter compatability issues trying to install it six years after it was built...
+The use case for Keystone centers around the CMS, accessible at a private URL. This populates custom blocks of content, as well as various diagrams, videos, etc. around the site. This keeps developer maintenance to a minimum and skyrockets the speed and flexibility of layman-level updates.
 
-### Notes on Keystone.js:
+### Other notes on Keystone.js
 
+- This site uses **_VERSION 4_**. V5 saw major changes so be sure to work in accordance with V4.
 - Dev only possible with network connection.
 - CMS'd images are sourced REMOTELY w/ Cloudinary
 - To add something to the CMS, simply register and edit the data model in /models
